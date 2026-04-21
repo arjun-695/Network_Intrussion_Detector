@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap');
+      text { font-family: 'Inter', sans-serif; }
+      
+      .box { fill: #1e293b; stroke: #38bdf8; stroke-width: 2; rx: 8; ry: 8; }
+      .box-green { fill: #1e293b; stroke: #10b981; stroke-width: 2; rx: 8; ry: 8; }
+      .box-purple { fill: #1e293b; stroke: #a855f7; stroke-width: 2; rx: 8; ry: 8; }
+      .title { fill: #f8fafc; font-size: 16px; font-weight: 600; text-anchor: middle; }
+      .subtitle { fill: #94a3b8; font-size: 12px; text-anchor: middle; }
+      
+      .link { fill: none; stroke: #475569; stroke-width: 3; stroke-dasharray: 6 6; animation: dash 2s linear infinite; }
+      .link-solid { fill: none; stroke: #475569; stroke-width: 3; }
+      @keyframes dash {
+        to { stroke-dashoffset: -12; }
+      }
+      
+      .particle { fill: #38bdf8; }
+      .particle-green { fill: #10b981; }
+      
+      /* Glowing drop shadow */
+      .glow { filter: drop-shadow(0 0 8px rgba(56,189,248,0.6)); }
+      .glow-green { filter: drop-shadow(0 0 8px rgba(16,185,129,0.6)); }
+    </style>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="600" fill="#0f172a" rx="16" ry="16"/>
+
+  <text x="500" y="50" fill="#f8fafc" font-size="24" font-weight="800" text-anchor="middle" class="glow">Data Processing &amp; Model Architecture Workflow</text>
+
+  <!-- Section 1: Data Pipeline -->
+  <rect x="50" y="100" width="900" height="150" fill="#1e293b" fill-opacity="0.3" stroke="#475569" stroke-width="1" stroke-dasharray="4" rx="8" ry="8"/>
+  <text x="70" y="130" fill="#94a3b8" font-size="14" font-weight="600">Phase 1: Data Pipeline</text>
+
+  <!-- Data Loading -->
+  <g transform="translate(100, 150)" class="glow">
+    <rect x="0" y="0" width="160" height="60" class="box-green"/>
+    <text x="80" y="25" class="title">CIC-IDS-2017</text>
+    <text x="80" y="45" class="subtitle">2.3M Rows (8 Parquets)</text>
+  </g>
+
+  <!-- Cleaning & Mapping -->
+  <g transform="translate(320, 150)" class="glow-green">
+    <rect x="0" y="0" width="160" height="60" class="box-green"/>
+    <text x="80" y="25" class="title">Preprocessing</text>
+    <text x="80" y="45" class="subtitle">Clean, 7 Attack Mapping</text>
+  </g>
+
+  <!-- SMOTE -->
+  <g transform="translate(540, 150)" class="glow-green">
+    <rect x="0" y="0" width="160" height="60" class="box-green"/>
+    <text x="80" y="25" class="title">Class Balancing</text>
+    <text x="80" y="45" class="subtitle">SMOTE (Minority Oversampling)</text>
+  </g>
+
+  <!-- Sequence Gen -->
+  <g transform="translate(760, 150)" class="glow-green">
+    <rect x="0" y="0" width="160" height="60" class="box-green"/>
+    <text x="80" y="25" class="title">Sequence Creation</text>
+    <text x="80" y="45" class="subtitle">Window = 30</text>
+  </g>
+
+  <!-- Links Data Pipeline -->
+  <path d="M 260 180 L 320 180" class="link" marker-end="url(#arrow)"/>
+  <path d="M 480 180 L 540 180" class="link" marker-end="url(#arrow)"/>
+  <path d="M 700 180 L 760 180" class="link" marker-end="url(#arrow)"/>
+
+  <!-- Section 2: Neural Net -->
+  <rect x="50" y="300" width="900" height="250" fill="#1e293b" fill-opacity="0.3" stroke="#475569" stroke-width="1" stroke-dasharray="4" rx="8" ry="8"/>
+  <text x="70" y="330" fill="#94a3b8" font-size="14" font-weight="600">Phase 2: Deep Learning Architecture (Accuracy: 97.9%)</text>
+
+  <!-- Input Proj -->
+  <g transform="translate(80, 400)" class="glow">
+    <rect x="0" y="0" width="140" height="70" class="box"/>
+    <text x="70" y="30" class="title">Input Projection</text>
+    <text x="70" y="50" class="subtitle">Linear + LayerNorm</text>
+  </g>
+
+  <!-- 1D CNN -->
+  <g transform="translate(260, 400)" class="glow">
+    <rect x="0" y="0" width="140" height="70" class="box"/>
+    <text x="70" y="30" class="title">1D CNN</text>
+    <text x="70" y="50" class="subtitle">Local Patterns</text>
+  </g>
+
+  <!-- BiLSTM -->
+  <g transform="translate(440, 400)" class="glow">
+    <rect x="0" y="0" width="140" height="70" class="box-purple"/>
+    <text x="70" y="30" class="title">Stacked BiLSTM</text>
+    <text x="70" y="50" class="subtitle">Temporal Dep.</text>
+  </g>
+
+  <!-- MHA -->
+  <g transform="translate(620, 400)" class="glow">
+    <rect x="0" y="0" width="140" height="70" class="box-purple"/>
+    <text x="70" y="30" class="title">MHA</text>
+    <text x="70" y="50" class="subtitle">4-Head Attention</text>
+  </g>
+
+  <!-- Classifier -->
+  <g transform="translate(800, 400)" class="glow">
+    <rect x="0" y="0" width="140" height="70" class="box"/>
+    <text x="70" y="20" class="title">Classifier</text>
+    <text x="70" y="40" class="subtitle">Dense Layers</text>
+    <text x="70" y="60" class="subtitle" fill="#10b981">6 Classes Out</text>
+  </g>
+
+  <!-- Links NN Pipeline -->
+  <path d="M 220 435 L 260 435" class="link-solid" marker-end="url(#arrow)"/>
+  <path d="M 400 435 L 440 435" class="link-solid" marker-end="url(#arrow)"/>
+  <path d="M 580 435 L 620 435" class="link-solid" marker-end="url(#arrow)"/>
+  <path d="M 760 435 L 800 435" class="link-solid" marker-end="url(#arrow)"/>
+
+  <!-- Bridge Link Phase 1 to Phase 2 -->
+  <path d="M 840 210 Q 840 300 150 300 T 150 400" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 5">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+  </path>
+  <circle cx="150" cy="400" r="4" fill="#38bdf8"/>
+
+  <!-- Animations -->
+  <circle r="4" class="particle-green">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 260 180 L 320 180" />
+  </circle>
+  <circle r="4" class="particle-green">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 480 180 L 540 180" />
+  </circle>
+  <circle r="4" class="particle-green">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 700 180 L 760 180" />
+  </circle>
+  
+  <circle r="4" class="particle">
+    <animateMotion dur="1s" repeatCount="indefinite" path="M 220 435 L 260 435" />
+  </circle>
+  <circle r="4" class="particle">
+    <animateMotion dur="1s" repeatCount="indefinite" path="M 400 435 L 440 435" />
+  </circle>
+  <circle r="4" class="particle">
+    <animateMotion dur="1s" repeatCount="indefinite" path="M 580 435 L 620 435" />
+  </circle>
+  <circle r="4" class="particle">
+    <animateMotion dur="1s" repeatCount="indefinite" path="M 760 435 L 800 435" />
+  </circle>
+
+</svg>
